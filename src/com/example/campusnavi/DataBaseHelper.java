@@ -50,10 +50,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		boolean dbExist = checkDataBase();
 
 		if (dbExist) {
-			// Do nothing
+			Log.d("DB exist", "DB exist");
 		} else {
 
-			System.out.println("DB NOT exist");
+			Log.d("DB NOT exist", "DB NOT exist");
 			// By calling this method and empty database will be created into
 			// the default system path
 			// of your application so we are gonna be able to overwrite that
@@ -90,7 +90,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 		} catch (SQLiteException e) {
 
-			// database does't exist yet.
+			// database doesn't exist yet.
 
 		}
 
@@ -100,8 +100,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 		}
 
-		//return checkDB != null ? true : false;
-		return false;
+		return checkDB != null ? true : false;
 
 	}
 
