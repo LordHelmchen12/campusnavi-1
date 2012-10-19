@@ -1,28 +1,28 @@
 package com.example.campusnavi;
 
 public class POI {
-	private long id;
-	  private String poi;
+	private int id;
+	private String bezeichnung;
 
-	  public long getId() {
-	    return id;
-	  }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-	  public void setId(long id) {
-	    this.id = id;
-	  }
+	public void setBezeichnung(String bezeichnung) {
+		this.bezeichnung = bezeichnung;
+	}
+	
+	public long getId() {
+		return this.id;
+	}
+	
+	public String getBezeichnung() {
+		return this.bezeichnung;
+	}
 
-	  public String getPOI() {
-	    return poi;
-	  }
-
-	  public void setPOI(String comment) {
-	    this.poi = comment;
-	  }
-
-	  // Will be used by the ArrayAdapter in the ListView
-	  @Override
-	  public String toString() {
-	    return poi;
-	  }
+	// Will be used by the ArrayAdapter in the ListView
+	@Override
+	public String toString() {
+		return "ID: " + this.getId() + " Bezeichnung: " + this.getBezeichnung();
+	}
 }

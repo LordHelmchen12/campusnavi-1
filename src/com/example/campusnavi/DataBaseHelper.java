@@ -1,5 +1,6 @@
 package com.example.campusnavi;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,13 +11,17 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
 	// The Android's default system path of your application database.
 	private static String DB_PATH = "/data/data/com.example.campusnavi/databases/";
+	private static String DB_NAME = "campusnavi.sql";
 
-	private static String DB_NAME = "campusnavi";
+	public static final String TABLE_POIS = "pois";
+	public static final String COLUMN_ID = "_id";
+	public static final String COLUMN_BEZEICHNUNG = "bezeichnung";
 
 	private SQLiteDatabase myDataBase;
 
@@ -39,22 +44,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	 * database.
 	 * */
 	public void createDataBase() throws IOException {
+		
+		Log.d("Create DB", "Start creating DB");
 
 		boolean dbExist = checkDataBase();
 
 		if (dbExist) {
-			// do nothing - database already exist
+			// Do nothing
 		} else {
 
+			System.out.println("DB NOT exist");
 			// By calling this method and empty database will be created into
 			// the default system path
 			// of your application so we are gonna be able to overwrite that
 			// database with our database.
-			this.getReadableDatabase();
+			this.getWritableDatabase().close();
 
 			try {
 
 				copyDataBase();
+				System.out.println("Copy success");
 
 			} catch (IOException e) {
 
@@ -91,7 +100,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 		}
 
-		return checkDB != null ? true : false;
+		//return checkDB != null ? true : false;
+		return false;
+
 	}
 
 	/**
@@ -100,6 +111,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	 * handled. This is done by transfering bytestream.
 	 * */
 	private void copyDataBase() throws IOException {
+
+		File f = new File(DB_PATH);
+		if (!f.exists()) {
+			f.mkdir();
+		}
 
 		// Open your local db as the input stream
 		InputStream myInput = myContext.getAssets().open(DB_NAME);
@@ -145,12 +161,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		
+
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		
+
 	}
 
 	// Add your public helper methods to access and get content from the
