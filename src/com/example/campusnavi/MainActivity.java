@@ -1,6 +1,7 @@
 package com.example.campusnavi;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ListActivity;
@@ -44,13 +45,17 @@ public class MainActivity extends ListActivity {
 		datasource = new DataSource(this);
 		datasource.open();
 
-		List<POI> values = datasource.getAllPOIS();
+		List<POI> pois = datasource.getAllPOIS();
+		List<Person> personen = datasource.getAllPersons();
+		
+		List<POI> pois_byid = new ArrayList<POI>();
+		pois_byid.add(datasource.getPoiById(0));
 
 		datasource.close();
 		// Use the SimpleCursorAdapter to show the
 		// elements in a ListView
-		ArrayAdapter<POI> adapter = new ArrayAdapter<POI>(this,
-				android.R.layout.simple_list_item_1, values);
+		ArrayAdapter<Person> adapter = new ArrayAdapter<Person>(this,
+				android.R.layout.simple_list_item_1, personen);
 		setListAdapter(adapter);
 	}
 

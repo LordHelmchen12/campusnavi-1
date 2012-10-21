@@ -20,8 +20,41 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	private static String DB_NAME = "campusnavi.sql";
 
 	public static final String TABLE_POIS = "pois";
-	public static final String COLUMN_ID = "_id";
-	public static final String COLUMN_BEZEICHNUNG = "bezeichnung";
+	public static final String POIS_ID = "_id";
+	public static final String POIS_BEZEICHNUNG = "bezeichnung";
+	public static final String POIS_GEBAEUDE = "gebaeude";
+	public static final String POIS_FACHBEREICH = "fachbereich";
+	public static final String POIS_BEWERTUNG = "bewertung";
+	public static final String POIS_TAGS = "tags";
+	public static final String POIS_BESONDERHEIT = "besonderheit";
+	public static final String POIS_X_KOORDINATE = "x_koordinate";
+	public static final String POIS_Y_KOORDINATE = "y_koordinate";
+	
+	public static final String TABLE_PERSONEN = "personen";
+	public static final String PERSONEN_ID = "_id";
+	public static final String PERSONEN_VORNAME = "vorname";
+	public static final String PERSONEN_NACHNAME = "nachname";
+	public static final String PERSONEN_TITEL = "titel";
+	public static final String PERSONEN_SPRECHZEIT = "sprechzeit";
+	public static final String PERSONEN_ZUSTAENDIGKEITEN = "zustaendigkeiten";
+	public static final String PERSONEN_EMAIL = "email";
+	public static final String PERSONEN_POI = "poi";
+	
+	public static final String TABLE_RAEUME = "raeume";
+	public static final String RAEUME_ID = "_id";
+	public static final String RAEUME_NAME = "name";
+	public static final String RAEUME_NUMMER = "nummer";
+	public static final String RAEUME_GEBAEUDE = "gebaeude";
+	public static final String RAEUME_STOCKWERK = "stockwerk";
+	
+
+	public static final String TABLE_GEBAEUDE = "gebaeude";
+	public static final String GEBAEUDE_ID = "_id";
+	public static final String GEBAEUDE_NUMMER = "nummer";
+	
+	public static final String TABLE_FACHBEREICHE = "fachbereiche";
+	public static final String FACHBEREICHE_ID = "_id";
+	public static final String FACHBEREICHE_BEZEICHNUNG = "bezeichnung";
 
 	private SQLiteDatabase myDataBase;
 
@@ -100,7 +133,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 		}
 
-		return checkDB != null ? true : false;
+		//return checkDB != null ? true : false;
+		return false;
 
 	}
 
