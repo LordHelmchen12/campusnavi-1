@@ -1,5 +1,6 @@
 package de.fhl.campusnavi;
 
+
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -43,7 +44,7 @@ public class Map extends Activity implements LocationListener {
       }catch(Exception e){
     	  //go to Nordcap
          e.printStackTrace();
-        markerDevice = "javascript:markerLocationDevice(71.147081,25.747833)";
+        markerDevice = "javascript:markerDevice(71.147081,25.747833)";
       }
       
       webView = (WebView) findViewById(R.id.webview);
@@ -141,7 +142,6 @@ public class Map extends Activity implements LocationListener {
                     
                     //Load assets/html/index.html resource into the WebView control
                     this.webView.loadUrl("file:///android_asset/html/index.html");
-                    //this.webView.loadUrl("http://gmaps-samples.googlecode.com/svn/trunk/articles-android-webmap/simple-android-map.html");
             }
             catch(Exception e)
             {
@@ -188,4 +188,3 @@ final class MyWebChromeClient extends WebChromeClient
 }
 	
 }
-
