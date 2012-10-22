@@ -33,6 +33,7 @@ public class Map extends Activity implements LocationListener {
       setContentView(R.layout.activity_map);
       getLocation();
       setupWebView();
+      this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     /** Sets up the WebView object and loads the URL of the page **/
