@@ -123,7 +123,7 @@ public class Map extends Activity implements LocationListener {
      */
     public void onLocationChanged(Location location) {
       mostRecentLocation = location;
-	      if(markerDevice.equals("javascript:markerDevice(mostRecentLocation.getLatitude() + mostRecentLocation.getLongitude())")){
+	      if(markerDevice.equals("javascript:markerDevice(" + mostRecentLocation.getLatitude() + "," + mostRecentLocation.getLongitude() + ")")){
 	         webView.loadUrl(markerDevice);
 	      }
     }

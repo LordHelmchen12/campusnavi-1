@@ -133,8 +133,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 		}
 
-		//return checkDB != null ? true : false;
-		return false;
+		return checkDB != null ? true : false;
+		//return false;
 
 	}
 

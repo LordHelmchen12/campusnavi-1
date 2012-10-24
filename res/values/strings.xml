@@ -8,5 +8,7 @@
     <string name="title_activity_main_activity2">MainActivity2</string>
     <string name="title_activity_main_activity3">MainActivity3</string>
     <string name="title_activity_map">Map</string>
+    <string name="title_activity_start">Start</string>
+    <string name="title_activity_show_all_persons">ShowAllPersons</string>
 
 </resources>
