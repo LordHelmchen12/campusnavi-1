@@ -188,7 +188,6 @@ public class DataSource {
 		raum.setNummer(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.RAEUME_NUMMER)));
 		raum.setName(cursor.getString(cursor.getColumnIndex(DataBaseHelper.RAEUME_NAME)));
 		raum.setStockwerk(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.RAEUME_STOCKWERK)));
-		raum.setGebaeude(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.RAEUME_GEBAEUDE)));
 		return raum;
 	}
 	

@@ -1,11 +1,11 @@
 package de.fhl.campusnavi;
 
-public class Raum {
+public class Raum extends POI {
 	private int id;
 	private String name;
 	private int nummer;
 	private int stockwerk;
-	private int gebaeude;
+	private POI poi;
 	
 	public int getId() {
 		return id;
@@ -31,12 +31,14 @@ public class Raum {
 	public void setStockwerk(int stockwerk) {
 		this.stockwerk = stockwerk;
 	}
-	public int getGebaeude() {
-		return gebaeude;
+	
+	public POI getPoi() {
+		return poi;
 	}
-	public void setGebaeude(int gebaeude) {
-		this.gebaeude = gebaeude;
+	public void setPoi(POI poi) {
+		this.poi = poi;
 	}
+	
 	@Override
 	public String toString() {
 		return this.getName();

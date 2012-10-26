@@ -1,6 +1,6 @@
 package de.fhl.campusnavi;
 
-public class Person {
+public class Person extends POI {
 	private int id;
 	private String vorname;
 	private String nachname;

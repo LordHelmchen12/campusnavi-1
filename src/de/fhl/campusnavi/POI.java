@@ -10,8 +10,6 @@ public class POI {
 	private String besonderheit;
 	private int x_koordinate;
 	private int y_koordinate;
-
-	
 	
 	public int getId() {
 		return id;
