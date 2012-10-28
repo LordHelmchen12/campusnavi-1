@@ -42,7 +42,7 @@ public class Start extends Activity {
 	}
 	
 	public void openPois(View view) {
-	    Intent intent = new Intent(this, ShowAllPois.class);
+	    Intent intent = new Intent(this, Map.class);
 	    startActivity(intent);
 	}
 	

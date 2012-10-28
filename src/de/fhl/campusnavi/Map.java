@@ -25,6 +25,7 @@ public class Map extends Activity implements LocationListener {
     private Location mostRecentLocation;
     private String markerDevice;
     private String markerTarget;
+    //private String infoTarget;
     
   
     /**
@@ -74,7 +75,7 @@ public class Map extends Activity implements LocationListener {
   
      try{
     	markerDevice = "javascript:markerDevice(" + mostRecentLocation.getLatitude() + "," + mostRecentLocation.getLongitude()+ ")";
-        markerTarget = "javascript:markerTarget(53.83769929578616,10.69892406463623)";
+        markerTarget = "javascript:markerTarget(" + 53.83769929578616 +"," + 10.69892406463623 + "," + 123456 +")";
       }catch(Exception e){
     	  //go to Nordcap
          e.printStackTrace();
@@ -89,6 +90,7 @@ public class Map extends Activity implements LocationListener {
 	        public void onPageFinished(WebView view, String url){
 	        	webView.loadUrl(markerDevice);
 	        	webView.loadUrl(markerTarget);
+	        	//webView.loadUrl(infoTarget);
 	        	//webView.loadUrl("javascript:showTrafficLayer()");
 	        	//webView.loadUrl("javascript:showBicyclingLayer()");
 	        }
@@ -168,6 +170,7 @@ public class Map extends Activity implements LocationListener {
     	public double getLongitude() {
     	return mostRecentLocation.getLongitude();
     	}
+    	
     }
   
 	/**
