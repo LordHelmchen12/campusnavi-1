@@ -19,8 +19,8 @@ import android.webkit.WebViewClient;
 
 public class Map extends Activity implements LocationListener {
 
-	//private static final String MAP_URL = "file:///android_asset/googleMap.html";
-	private static final String MAP_URL = "http://gmaps-samples.googlecode.com/svn/trunk/articles-android-webmap/simple-android-map.html";
+	private static final String MAP_URL = "file:///android_asset/googleMap.html";
+	//private static final String MAP_URL = "http://gmaps-samples.googlecode.com/svn/trunk/articles-android-webmap/simple-android-map.html";
     private WebView webView;
     private Location mostRecentLocation;
     private String markerDevice;
