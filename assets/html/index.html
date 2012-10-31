@@ -6,80 +6,105 @@
 <script type="text/javascript">
 
 var map;
+var OutOfBoundsLatlng;
 
-function initialize() {
-  var latitude = 0;
-  var longitude = 0;
-  
-  
-  if (window.android){
-    latitude = window.android.getLatitude();
-    longitude = window.android.getLongitude();  
-  }
-  	 
-  	
-	var DeviceLatlng = new google.maps.LatLng(latitude,longitude); 
-	var TargetLatlng = new google.maps.LatLng(latitude,longitude);
+	function initialize() {
+		var latitude = 0;
+		var longitude = 0;
+	   
+		if (window.android){
+		  latitude = window.android.getLatitude();
+		  longitude = window.android.getLongitude();  
+		}
 	
-	var imageBounds = new google.maps.LatLngBounds(
-          new google.maps.LatLng(53.834403,10.695342),
-          new google.maps.LatLng(53.839370,10.703171));
-  
-  var myOptions = {
-    zoom: 16,  
-    center: DeviceLatlng,
-    disableDefaultUI: true,
-    mapTypeId: google.maps.MapTypeId.HYBRID
-  }
-  
-  map = new google.maps.Map(document.getElementById("map_canvas"),
-    myOptions);
-  var opt = { minZoom: 16, maxZoom: 19 };
-  map.setOptions(opt);
-  
-  
-  var campusmap = 'file:///android_asset/png/campusmap.png';
-  var oldmap = new google.maps.GroundOverlay(
-		  campusmap,
-          imageBounds);
-      oldmap.setMap(map);
-      
-      
-      
-}
-function markerDevice(latitude,longitude){
-	  DeviceLatlng = new google.maps.LatLng(latitude,longitude);
-	  map.panTo(DeviceLatlng);
-	  var imageD = 'file:///android_asset/png/imageDevice.gif';
-	  var markerDevice = new google.maps.Marker({
-	      position: DeviceLatlng, 
-	      map: map,
-	      title:"Start",
-	      icon: imageD
-	  });
+		var DeviceLatlng = new google.maps.LatLng(latitude,longitude); 
+		var TargetLatlng = new google.maps.LatLng(latitude,longitude);
+		
+		<!-- Optionen für Karte -->
+		var mapOptions = {
+		  zoom: 16,  
+		  center: DeviceLatlng,
+		  disableDefaultUI: true,
+		  mapTypeId: google.maps.MapTypeId.HYBRID
+		}
+		<!-- Erstellen der Karte -->
+		map = new google.maps.Map(document.getElementById("map_canvas"),
+	    mapOptions);
+		<!-- Begrenzung Zoom In/Out -->
+		var opt = { minZoom: 16, maxZoom: 19 };
+		map.setOptions(opt);
 	  
-}
-function markerTarget(latitude,longitude){
-	var TargetLatlng = new google.maps.LatLng(latitude,longitude);
-	var imageT = 'file:///android_asset/png/imageDevice.gif';
-	
-	var markerTarget = new google.maps.Marker({
-	      position: TargetLatlng, 
-	      map: map,
-	      title:"Ziel",
-	      icon: imageT
-	  });
-}
+		<!-- Grenzen Overlay -->
+		<!-- 1. Objekt SouthWest(Breite, Laenge), 2. Objekt NorthEast(Breite, Laenge) -->
+		<!-- Über die Diagonale wird ein Rechteck erzeugt -->
+		var imageBounds = new google.maps.LatLngBounds(
+			new google.maps.LatLng(53.83513207225795, 10.696070194244385),
+			new google.maps.LatLng(53.839411745800554, 10.702056884765625));
+		
+		<!-- Overlay Campus FHL -->
+	  	var campusmap = 'file:///android_asset/png/campusmap.png';
+		var oldmap = new google.maps.GroundOverlay(
+				  campusmap,
+		          imageBounds);
+		      oldmap.setMap(map);
+	      
+		<!-- Grenzen Campus FHL -->
+		<!-- 1. Objekt SouthWest(Breite, Laenge), 2. Objekt NorthEast(Breite, Laenge) -->
+		<!-- Über die Diagonale wird ein Rechteck erzeugt -->
+	   	var strictBounds = new google.maps.LatLngBounds(
+			new google.maps.LatLng(53.83350492185881, 10.693860054016113),
+			new google.maps.LatLng(53.83963964514338, 10.702646970748901));
+	      
+	   	
+	   	<!-- EventListener -->
+		<!-- Achtet darauf, dass Grenzen eigehalten werden -->
+		google.maps.event.addListener(map, 'bounds_changed', function() {
+		    if (strictBounds.contains(map.getCenter())) return;
+		
+		    <!-- Vergleich der Grenzen-->
+		    var c = map.getCenter(),
+		    var x = c.lat(),
+		    var y = c.lng(),
+		    var maxX = strictBounds.getNorthEast().lng(),
+		    var maxY = strictBounds.getNorthEast().lat(),
+		    var minX = strictBounds.getSouthWest().lng(),
+		    var minY = strictBounds.getSouthWest().lat();
+		    <!-- Grenzen ueberschritten - Karte wird auf Geratetstandort zentriert und auf minZoom-Grenze gesetzt-->
+		    if (x < minX || x > maxX){
+		  	  map.setCenter(OutOfBoundsLatlng);
+		  	  map.setZoom(16);
+		    }  
+		    if (y < minY || y > maxY) {
+		  	  map.setCenter(OutOfBoundsLatlng);
+		  	  map.setZoom(16);
+		    }    
+		});  
+	      
+	}
+	function markerDevice(latitude,longitude){
+		  DeviceLatlng = new google.maps.LatLng(latitude,longitude);
+		  OutOfBoundsLatlng = new google.maps.LatLng(latitude,longitude);
+		  map.panTo(DeviceLatlng);
+		  var imageD = 'file:///android_asset/png/imageDevice.gif';
+		  var markerDevice = new google.maps.Marker({
+		      position: DeviceLatlng, 
+		      map: map,
+		      title:"Start",
+		      icon: imageD
+		  });
+		  
+	}
+	function markerTarget(latitude,longitude){
+		var TargetLatlng = new google.maps.LatLng(latitude,longitude);
+		var imageT = 'file:///android_asset/png/imageDevice.gif';
+		var markerTarget = new google.maps.Marker({
+		      position: TargetLatlng, 
+		      map: map,
+		      title:"Ziel",
+		      icon: imageT
+		  });
+	}
 
-
-function showTrafficLayer(){
-  var trafficLayer = new google.maps.TrafficLayer();
- trafficLayer.setMap(map);
-}
-function showBicyclingLayer(){
- var bikeLayer = new google.maps.BicyclingLayer();
- bikeLayer.setMap(map);
-}
 </script> 
 </head>
 <body style="margin:0px; padding:0px;" onload="initialize()"> 
