@@ -21,4 +21,14 @@
         android:onClick="openPersonTypes"
         android:text="Personen" />
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:onClick="openRaumTypen"
+        android:text="Räume" />
+
 </RelativeLayout>

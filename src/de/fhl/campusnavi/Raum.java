@@ -41,7 +41,7 @@ public class Raum extends POI {
 	
 	@Override
 	public String toString() {
-		return this.getName();
+		return this.getNummer() + " " + this.getName();
 	}
 
 }

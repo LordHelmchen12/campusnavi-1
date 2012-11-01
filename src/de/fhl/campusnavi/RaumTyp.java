@@ -25,6 +25,6 @@ public class RaumTyp {
 	}
 	
 	public String toString() {
-		return id + " " + bezeichnung;
+		return this.bezeichnung;
 	}
 }

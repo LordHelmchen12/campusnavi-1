@@ -49,6 +49,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.fhl.campusnavi.ShowAllPersons" />
         </activity>
+        <activity
+            android:name=".ShowAllRaumTypen"
+            android:label="@string/title_activity_show_all_raum_typen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ShowAllRaeume"
+            android:label="@string/title_activity_show_all_raeume" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

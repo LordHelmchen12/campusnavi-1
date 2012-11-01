@@ -45,7 +45,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	public static final String PERSONEN_TYPEN_ID = "_id";
 	public static final String PERSONEN_TYPEN_BEZEICHNUNG = "bezeichnung";
 	
-	public static final String TABLE_RAEUME = "raume";
+	public static final String TABLE_RAEUME = "raeume";
 	public static final String RAEUME_ID = "_id";
 	public static final String RAEUME_NAME = "name";
 	public static final String RAEUME_NUMMER = "nummer";

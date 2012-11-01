@@ -50,4 +50,9 @@ public class Start extends Activity {
 	    Intent intent = new Intent(this, ShowAllPersonTyp.class);
 	    startActivity(intent);
 	}
+	
+	public void openRaumTypen(View view) {
+	    Intent intent = new Intent(this, ShowAllRaumTypen.class);
+	    startActivity(intent);
+	}
 }

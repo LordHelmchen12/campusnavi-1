@@ -163,11 +163,11 @@ public class DataSource {
 	
 	/* Getters for Raeume */
 	
-	public List<Raum> getAllRaeume() {
+	public List<Raum> getRaeumeByType(int typ) {
 		List<Raum> list = new ArrayList<Raum>();
 		
 		Cursor cursor = database.query(DataBaseHelper.TABLE_RAEUME,
-				null, null, null, null, null, null);
+				null, "typ = " + typ, null, null, null, null);
 		
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
