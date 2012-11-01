@@ -10,5 +10,7 @@
     <string name="title_activity_map">Map</string>
     <string name="title_activity_start">Start</string>
     <string name="title_activity_show_all_persons">ShowAllPersons</string>
+    <string name="title_activity_show_all_person_typ">ShowAllPersonTyp</string>
+    <string name="title_activity_show_person">ShowPerson</string>
 
 </resources>

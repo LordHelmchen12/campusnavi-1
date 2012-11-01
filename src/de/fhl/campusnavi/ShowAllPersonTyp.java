@@ -9,29 +9,28 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
-public class ShowAllPersons extends ListActivity {
+public class ShowAllPersonTyp extends ListActivity {
 	private DataSource datasource;
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_show_list);
-		
-		Intent intent = getIntent();
-			
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_show_list); 
+
 		datasource = new DataSource(this);
 		datasource.open();
-		
-		List<Person> persons = datasource.getPersonsByType(intent.getIntExtra("selected", 0));
+
+		List<PersonTyp> persontypen = datasource.getAllPersonTypen();
 
 		datasource.close();
 		
 		// Use the SimpleCursorAdapter to show the
 		// elements in a ListView
-		ArrayAdapter<Person> adapter = new ArrayAdapter<Person>(this,
-				android.R.layout.simple_list_item_1, persons);
+		ListAdapter adapter = new ArrayAdapter<PersonTyp>(this,
+				android.R.layout.simple_list_item_1, persontypen);
 		final ListView lv = getListView();
 		lv.setAdapter(adapter);
 		
@@ -39,18 +38,17 @@ public class ShowAllPersons extends ListActivity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				Intent intent = new Intent();
-				intent.setClassName(getPackageName(), getPackageName()+".ShowPerson");
-				int selected = ((Person) lv.getAdapter().getItem(arg2)).getId();
+				intent.setClassName(getPackageName(), getPackageName()+".ShowAllPersons");
+				int selected = ((PersonTyp) lv.getAdapter().getItem(arg2)).getId();
 				intent.putExtra("selected", selected);
 				startActivity(intent);
 			}
 		});
-	}
-	
+    }
+
 	public void Back(View view) {
-	    Intent intent = new Intent(this, ShowAllPersonTyp.class);
-	    datasource.close();
-	    startActivity(intent);
+		Intent intent = new Intent(this, Start.class);
+		startActivity(intent);
 	}
 
 	@Override

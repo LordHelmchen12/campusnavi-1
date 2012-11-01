@@ -26,97 +26,107 @@ public class DataSource {
 
 	/* Getters for POIS */
 	
-	public List<POI> getAllPOIS() {
-		List<POI> pois = new ArrayList<POI>();
-		
-		Cursor cursor = database.query(DataBaseHelper.TABLE_POIS,
-				null, null, null, null, null, null);
-
-		cursor.moveToFirst();
-		while (!cursor.isAfterLast()) {
-			POI poi = cursorToPOI(cursor);
-			pois.add(poi);
-			cursor.moveToNext();
-		}
-		// Make sure to close the cursor
-		cursor.close();
-		return pois;
-	}
-	
 	public POI getPoiById(int Id) {
-		POI poi = new POI();
+		POI ret = new POI();
 		
 		Cursor cursor = database.query(DataBaseHelper.TABLE_POIS,
 				null, "_id = " + Id, null, null, null, null);
 
 		cursor.moveToFirst();
-		poi = cursorToPOI(cursor);
+		ret = cursorToPOI(cursor);
 		cursor.close();
-		return poi;
+		return ret;
 	}
 
 	private POI cursorToPOI(Cursor cursor) {
-		POI poi = new POI();
-		poi.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.POIS_ID)));
-		poi.setBezeichnung(cursor.getString(cursor.getColumnIndex(DataBaseHelper.POIS_BEZEICHNUNG)));
-		poi.setGebaeude(cursor.getString(cursor.getColumnIndex(DataBaseHelper.POIS_GEBAEUDE)));
-		poi.setFachbereich(cursor.getString(cursor.getColumnIndex(DataBaseHelper.POIS_FACHBEREICH)));
-		poi.setBewertung(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.POIS_BEWERTUNG)));
-		poi.setTags(cursor.getString(cursor.getColumnIndex(DataBaseHelper.POIS_TAGS)));
-		poi.setBesonderheit(cursor.getString(cursor.getColumnIndex(DataBaseHelper.POIS_BESONDERHEIT)));
-		poi.setX_koordinate(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.POIS_X_KOORDINATE)));
-		poi.setY_koordinate(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.POIS_Y_KOORDINATE)));
-		return poi;
+		POI ret = new POI();
+		ret.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.POIS_ID)));
+		ret.setBezeichnung(cursor.getString(cursor.getColumnIndex(DataBaseHelper.POIS_BEZEICHNUNG)));
+		ret.setGebaeude(cursor.getString(cursor.getColumnIndex(DataBaseHelper.POIS_GEBAEUDE)));
+		ret.setFachbereich(cursor.getString(cursor.getColumnIndex(DataBaseHelper.POIS_FACHBEREICH)));
+		ret.setBewertung(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.POIS_BEWERTUNG)));
+		ret.setTags(cursor.getString(cursor.getColumnIndex(DataBaseHelper.POIS_TAGS)));
+		ret.setBesonderheit(cursor.getString(cursor.getColumnIndex(DataBaseHelper.POIS_BESONDERHEIT)));
+		ret.setX_koordinate(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.POIS_X_KOORDINATE)));
+		ret.setY_koordinate(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.POIS_Y_KOORDINATE)));
+		return ret;
 	}
 	
-	/* Getters for Personen */
+	/* Getters for Person */
 	
-	public List<Person> getAllPersons() {
-		List<Person> personen = new ArrayList<Person>();
+	public List<Person> getPersonsByType(int typ) {
+		List<Person> list = new ArrayList<Person>();
 		
 		Cursor cursor = database.query(DataBaseHelper.TABLE_PERSONEN,
-				null, null, null, null, null, null);
+				null, "typ = " + typ, null, null, null, null);
 		
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			Person person = cursorToPerson(cursor);
-			personen.add(person);
+			list.add(person);
 			cursor.moveToNext();
 		}
 		
 		cursor.close();
-		return personen;
+		return list;
 	}
 	
 	public Person getPersonById(int Id) {
-		Person person = new Person();
+		Person ret = new Person();
 		
 		Cursor cursor = database.query(DataBaseHelper.TABLE_PERSONEN,
 				null, "_id = " + Id, null, null, null, null);
 
 		cursor.moveToFirst();
-		person = cursorToPerson(cursor);
+		ret = cursorToPerson(cursor);
 		cursor.close();
-		return person;
+		return ret;
 	}	
 	
 	private Person cursorToPerson(Cursor cursor) {
-		Person person = new Person();
-		person.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.PERSONEN_ID)));
-		person.setVorname(cursor.getString(cursor.getColumnIndex(DataBaseHelper.PERSONEN_VORNAME)));
-		person.setNachname(cursor.getString(cursor.getColumnIndex(DataBaseHelper.PERSONEN_NACHNAME)));
-		person.setTitel(cursor.getString(cursor.getColumnIndex(DataBaseHelper.PERSONEN_TITEL)));
-		person.setSprechzeit(cursor.getString(cursor.getColumnIndex(DataBaseHelper.PERSONEN_SPRECHZEIT)));
-		person.setZustaendigkeiten(cursor.getString(cursor.getColumnIndex(DataBaseHelper.PERSONEN_ZUSTAENDIGKEITEN)));
-		person.setEmail(cursor.getString(cursor.getColumnIndex(DataBaseHelper.PERSONEN_EMAIL)));
-		person.setPOI(cursor.getString(cursor.getColumnIndex(DataBaseHelper.PERSONEN_POI)));
-		return person;
+		Person ret = new Person();
+		ret.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.PERSONEN_ID)));
+		ret.setVorname(cursor.getString(cursor.getColumnIndex(DataBaseHelper.PERSONEN_VORNAME)));
+		ret.setNachname(cursor.getString(cursor.getColumnIndex(DataBaseHelper.PERSONEN_NACHNAME)));
+		ret.setTitel(cursor.getString(cursor.getColumnIndex(DataBaseHelper.PERSONEN_TITEL)));
+		ret.setSprechzeit(cursor.getString(cursor.getColumnIndex(DataBaseHelper.PERSONEN_SPRECHZEIT)));
+		ret.setZustaendigkeiten(cursor.getString(cursor.getColumnIndex(DataBaseHelper.PERSONEN_ZUSTAENDIGKEITEN)));
+		ret.setEmail(cursor.getString(cursor.getColumnIndex(DataBaseHelper.PERSONEN_EMAIL)));
+		ret.setPOI(cursor.getString(cursor.getColumnIndex(DataBaseHelper.PERSONEN_POI)));
+		ret.setTelefonnummer(cursor.getString(cursor.getColumnIndex(DataBaseHelper.PERSONEN_TELEFONNUMMER)));
+		return ret;
+	}
+	
+	/* Getters for PersonTyp */
+	
+	public List<PersonTyp> getAllPersonTypen() {
+		List<PersonTyp> list = new ArrayList<PersonTyp>();
+		
+		Cursor cursor = database.query(DataBaseHelper.TABLE_PERSONEN_TYPEN,
+				null, null, null, null, null, null);
+		
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			PersonTyp persontyp = cursorToPersonTyp(cursor);
+			list.add(persontyp);
+			cursor.moveToNext();
+		}
+		
+		cursor.close();
+		return list;
+	}
+
+	private PersonTyp cursorToPersonTyp(Cursor cursor) {
+		PersonTyp ret = new PersonTyp();
+		ret.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.PERSONEN_TYPEN_ID)));
+		ret.setBezeichnung(cursor.getString(cursor.getColumnIndex(DataBaseHelper.PERSONEN_TYPEN_BEZEICHNUNG)));
+		return ret;
 	}
 	
 	/* Getters for Gebaeude */
 	
 	public List<Gebaeude> getAllGebaeude() {
-		List<Gebaeude> gebaeudeliste = new ArrayList<Gebaeude>();
+		List<Gebaeude> list = new ArrayList<Gebaeude>();
 		
 		Cursor cursor = database.query(DataBaseHelper.TABLE_GEBAEUDE,
 				null, null, null, null, null, null);
@@ -124,37 +134,37 @@ public class DataSource {
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			Gebaeude gebaeude = cursorToGebaeude(cursor);
-			gebaeudeliste.add(gebaeude);
+			list.add(gebaeude);
 			cursor.moveToNext();
 		}
 		
 		cursor.close();
-		return gebaeudeliste;
+		return list;
 	}
 	
 	public Gebaeude getGebaeudeById(int Id) {
-		Gebaeude gebaeude = new Gebaeude();
+		Gebaeude ret = new Gebaeude();
 		
 		Cursor cursor = database.query(DataBaseHelper.TABLE_GEBAEUDE,
 				null, "_id = " + Id, null, null, null, null);
 
 		cursor.moveToFirst();
-		gebaeude = cursorToGebaeude(cursor);
+		ret = cursorToGebaeude(cursor);
 		cursor.close();
-		return gebaeude;
+		return ret;
 	}	
 	
 	private Gebaeude cursorToGebaeude(Cursor cursor) {
-		Gebaeude gebaeude = new Gebaeude();
-		gebaeude.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.GEBAEUDE_ID)));
-		gebaeude.setNummer(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.GEBAEUDE_NUMMER)));
-		return gebaeude;
+		Gebaeude ret = new Gebaeude();
+		ret.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.GEBAEUDE_ID)));
+		ret.setNummer(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.GEBAEUDE_NUMMER)));
+		return ret;
 	}
 	
 	/* Getters for Raeume */
 	
 	public List<Raum> getAllRaeume() {
-		List<Raum> raeume = new ArrayList<Raum>();
+		List<Raum> list = new ArrayList<Raum>();
 		
 		Cursor cursor = database.query(DataBaseHelper.TABLE_RAEUME,
 				null, null, null, null, null, null);
@@ -162,39 +172,78 @@ public class DataSource {
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			Raum raum = cursorToRaum(cursor);
-			raeume.add(raum);
+			list.add(raum);
 			cursor.moveToNext();
 		}
 		
 		cursor.close();
-		return raeume;
+		return list;
 	}
 	
 	public Raum getRaumById(int Id) {
-		Raum raum = new Raum();
+		Raum ret = new Raum();
 		
 		Cursor cursor = database.query(DataBaseHelper.TABLE_RAEUME,
 				null, "_id = " + Id, null, null, null, null);
 
 		cursor.moveToFirst();
-		raum = cursorToRaum(cursor);
+		ret = cursorToRaum(cursor);
 		cursor.close();
-		return raum;
+		return ret;
 	}	
 	
 	private Raum cursorToRaum(Cursor cursor) {
-		Raum raum = new Raum();
-		raum.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.RAEUME_ID)));
-		raum.setNummer(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.RAEUME_NUMMER)));
-		raum.setName(cursor.getString(cursor.getColumnIndex(DataBaseHelper.RAEUME_NAME)));
-		raum.setStockwerk(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.RAEUME_STOCKWERK)));
-		return raum;
+		Raum ret = new Raum();
+		ret.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.RAEUME_ID)));
+		ret.setNummer(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.RAEUME_NUMMER)));
+		ret.setName(cursor.getString(cursor.getColumnIndex(DataBaseHelper.RAEUME_NAME)));
+		ret.setStockwerk(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.RAEUME_STOCKWERK)));
+		return ret;
+	}
+	
+	/* Getters for RaumTyp */
+	
+	public List<RaumTyp> getAllRaumTypen() {
+		List<RaumTyp> list = new ArrayList<RaumTyp>();
+		
+		Cursor cursor = database.query(DataBaseHelper.TABLE_RAEUME_TYPEN,
+				null, null, null, null, null, null);
+		
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			RaumTyp raumtyp = cursorToRaumTyp(cursor);
+			list.add(raumtyp);
+			cursor.moveToNext();
+		}
+		
+		cursor.close();
+		return list;
+	}
+	
+	public RaumTyp getRaumTypById(int Id) {
+		RaumTyp ret = new RaumTyp();
+		
+		Cursor cursor = database.query(DataBaseHelper.TABLE_RAEUME_TYPEN,
+				null, "_id = " + Id, null, null, null, null);
+
+		cursor.moveToFirst();
+		ret = cursorToRaumTyp(cursor);
+		cursor.close();
+		return ret;
+	}	
+	
+	private RaumTyp cursorToRaumTyp(Cursor cursor) {
+		RaumTyp ret = new RaumTyp();
+		ret.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.RAEUME_TYPEN_ID)));
+		ret.setBereich(cursor.getString(cursor.getColumnIndex(DataBaseHelper.RAEUME_TYPEN_BEREICH)));
+		ret.setBezeichnung(cursor.getString(cursor.getColumnIndex(DataBaseHelper.RAEUME_TYPEN_BEZEICHNUNG)));
+		return ret;
 	}
 	
 	/* Getters for Fachbereiche */
 	
 	public List<Fachbereich> getAllFachbereiche() {
-		List<Fachbereich> fachbereiche = new ArrayList<Fachbereich>();
+		List<Fachbereich> list = new ArrayList<Fachbereich>();
 		
 		Cursor cursor = database.query(DataBaseHelper.TABLE_FACHBEREICHE,
 				null, null, null, null, null, null);
@@ -202,31 +251,184 @@ public class DataSource {
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			Fachbereich fachbereich = cursorToFachbereich(cursor);
-			fachbereiche.add(fachbereich);
+			list.add(fachbereich);
 			cursor.moveToNext();
 		}
 		
 		cursor.close();
-		return fachbereiche;
+		return list;
 	}
 	
 	public Fachbereich getFachbereichById(int Id) {
-		Fachbereich fachbereich = new Fachbereich();
+		Fachbereich ret = new Fachbereich();
 		
 		Cursor cursor = database.query(DataBaseHelper.TABLE_FACHBEREICHE,
 				null, "_id = " + Id, null, null, null, null);
 
 		cursor.moveToFirst();
-		fachbereich = cursorToFachbereich(cursor);
+		ret = cursorToFachbereich(cursor);
 		cursor.close();
-		return fachbereich;
+		return ret;
 	}	
 	
 	private Fachbereich cursorToFachbereich(Cursor cursor) {
-		Fachbereich fachbereich = new Fachbereich();
-		fachbereich.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.FACHBEREICHE_ID)));
-		fachbereich.setBezeichnung(cursor.getString(cursor.getColumnIndex(DataBaseHelper.FACHBEREICHE_BEZEICHNUNG)));
-		return fachbereich;
+		Fachbereich ret = new Fachbereich();
+		ret.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.FACHBEREICHE_ID)));
+		ret.setBezeichnung(cursor.getString(cursor.getColumnIndex(DataBaseHelper.FACHBEREICHE_BEZEICHNUNG)));
+		return ret;
 	}
+	
+	/* Getters for Bedarf */
+	
+	public List<Bedarf> getAllBedarf() {
+		List<Bedarf> list = new ArrayList<Bedarf>();
+		
+		Cursor cursor = database.query(DataBaseHelper.TABLE_BEDARF,
+				null, null, null, null, null, null);
+		
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			Bedarf bedarf = cursorToBedarf(cursor);
+			list.add(bedarf);
+			cursor.moveToNext();
+		}
+		
+		cursor.close();
+		return list;
+	}
+	
+	public Bedarf getBedarfById(int Id) {
+		Bedarf ret = new Bedarf();
+		
+		Cursor cursor = database.query(DataBaseHelper.TABLE_BEDARF,
+				null, "_id = " + Id, null, null, null, null);
 
+		cursor.moveToFirst();
+		ret = cursorToBedarf(cursor);
+		cursor.close();
+		return ret;
+	}	
+	
+	private Bedarf cursorToBedarf(Cursor cursor) {
+		Bedarf ret = new Bedarf();
+		ret.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.BEDARF_ID)));
+		ret.setTyp(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.BEDARF_TYP)));
+		ret.setPoi(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.BEDARF_POI)));
+		return ret;
+	}
+	
+	/* Getters for BedarfTyp */
+	
+	public List<BedarfTyp> getAllBedarfTyp() {
+		List<BedarfTyp> list = new ArrayList<BedarfTyp>();
+		
+		Cursor cursor = database.query(DataBaseHelper.TABLE_BEDARF_TYPEN,
+				null, null, null, null, null, null);
+		
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			BedarfTyp bedarftyp = cursorToBedarfTyp(cursor);
+			list.add(bedarftyp);
+			cursor.moveToNext();
+		}
+		
+		cursor.close();
+		return list;
+	}
+	
+	public BedarfTyp getBedarfTypById(int Id) {
+		BedarfTyp ret = new BedarfTyp();
+		
+		Cursor cursor = database.query(DataBaseHelper.TABLE_BEDARF_TYPEN,
+				null, "_id = " + Id, null, null, null, null);
+
+		cursor.moveToFirst();
+		ret = cursorToBedarfTyp(cursor);
+		cursor.close();
+		return ret;
+	}	
+	
+	private BedarfTyp cursorToBedarfTyp(Cursor cursor) {
+		BedarfTyp ret = new BedarfTyp();
+		ret.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.BEDARF_TYPEN_ID)));
+		ret.setBezeichnung(cursor.getString(cursor.getColumnIndex(DataBaseHelper.BEDARF_TYPEN_BEZEICHNUNG)));
+		return ret;
+	}
+	
+	/* Getters for Wc */
+	
+	public List<Wc> getAllWc() {
+		List<Wc> list = new ArrayList<Wc>();
+		
+		Cursor cursor = database.query(DataBaseHelper.TABLE_BEDARF_TYPEN,
+				null, null, null, null, null, null);
+		
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			Wc wc = cursorToWc(cursor);
+			list.add(wc);
+			cursor.moveToNext();
+		}
+		
+		cursor.close();
+		return list;
+	}
+	
+	public Wc getWcById(int Id) {
+		Wc ret = new Wc();
+		
+		Cursor cursor = database.query(DataBaseHelper.TABLE_WC,
+				null, "_id = " + Id, null, null, null, null);
+
+		cursor.moveToFirst();
+		ret = cursorToWc(cursor);
+		cursor.close();
+		return ret;
+	}	
+	
+	private Wc cursorToWc(Cursor cursor) {
+		Wc ret = new Wc();
+		ret.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.WC_ID)));
+		ret.setTyp(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.WC_TYP)));
+		ret.setPoi(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.WC_POI)));
+		return ret;
+	}
+	
+/* Getters for WcTyp */
+	
+	public List<WcTyp> getAllWcTypen() {
+		List<WcTyp> list = new ArrayList<WcTyp>();
+		
+		Cursor cursor = database.query(DataBaseHelper.TABLE_WC_TYPEN,
+				null, null, null, null, null, null);
+		
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			WcTyp wctyp = cursorToWcTyp(cursor);
+			list.add(wctyp);
+			cursor.moveToNext();
+		}
+		
+		cursor.close();
+		return list;
+	}
+	
+	public WcTyp getWcTypById(int Id) {
+		WcTyp ret = new WcTyp();
+		
+		Cursor cursor = database.query(DataBaseHelper.TABLE_WC_TYPEN,
+				null, "_id = " + Id, null, null, null, null);
+
+		cursor.moveToFirst();
+		ret = cursorToWcTyp(cursor);
+		cursor.close();
+		return ret;
+	}	
+	
+	private WcTyp cursorToWcTyp(Cursor cursor) {
+		WcTyp ret = new WcTyp();
+		ret.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.WC_TYPEN_ID)));
+		ret.setBezeichnung(cursor.getString(cursor.getColumnIndex(DataBaseHelper.WC_TYPEN_BEZEICHNUNG)));
+		return ret;
+	}
 }

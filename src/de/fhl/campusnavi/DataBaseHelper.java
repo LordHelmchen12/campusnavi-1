@@ -39,6 +39,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	public static final String PERSONEN_ZUSTAENDIGKEITEN = "zustaendigkeiten";
 	public static final String PERSONEN_EMAIL = "email";
 	public static final String PERSONEN_POI = "poi";
+	public static final String PERSONEN_TELEFONNUMMER = "telefonnummer";
+	
+	public static final String TABLE_PERSONEN_TYPEN = "personen_typen";
+	public static final String PERSONEN_TYPEN_ID = "_id";
+	public static final String PERSONEN_TYPEN_BEZEICHNUNG = "bezeichnung";
 	
 	public static final String TABLE_RAEUME = "raeume";
 	public static final String RAEUME_ID = "_id";
@@ -47,7 +52,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	public static final String RAEUME_GEBAEUDE = "gebaeude";
 	public static final String RAEUME_STOCKWERK = "stockwerk";
 	
-
+	public static final String TABLE_RAEUME_TYPEN = "raeume_typen";
+	public static final String RAEUME_TYPEN_ID = "_id";
+	public static final String RAEUME_TYPEN_BEZEICHNUNG = "bezeichnung";
+	public static final String RAEUME_TYPEN_BEREICH = "bereich";
+	
 	public static final String TABLE_GEBAEUDE = "gebaeude";
 	public static final String GEBAEUDE_ID = "_id";
 	public static final String GEBAEUDE_NUMMER = "nummer";
@@ -56,6 +65,24 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	public static final String FACHBEREICHE_ID = "_id";
 	public static final String FACHBEREICHE_BEZEICHNUNG = "bezeichnung";
 
+	public static final String TABLE_BEDARF = "bedarf";
+	public static final String BEDARF_ID = "_id";
+	public static final String BEDARF_TYP = "typ";
+	public static final String BEDARF_POI = "poi";
+	
+	public static final String TABLE_BEDARF_TYPEN = "wc_typen";
+	public static final String BEDARF_TYPEN_ID = "_id";
+	public static final String BEDARF_TYPEN_BEZEICHNUNG = "bezeichnung";
+	
+	public static final String TABLE_WC = "wc";
+	public static final String WC_ID = "_id";
+	public static final String WC_TYP = "typ";
+	public static final String WC_POI = "poi";
+	
+	public static final String TABLE_WC_TYPEN = "wc_typen";
+	public static final String WC_TYPEN_ID = "_id";
+	public static final String WC_TYPEN_BEZEICHNUNG = "bezeichnung";
+	
 	private SQLiteDatabase myDataBase;
 
 	private final Context myContext;
@@ -133,8 +160,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 		}
 
-		return checkDB != null ? true : false;
-		//return false;
+		//return checkDB != null ? true : false;
+		return false;
 
 	}
 

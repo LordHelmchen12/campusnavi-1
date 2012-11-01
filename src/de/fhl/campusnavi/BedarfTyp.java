@@ -1,6 +1,6 @@
 package de.fhl.campusnavi;
 
-public class BedarfTypen {
+public class BedarfTyp {
 	private  int id;
 	private  String bezeichnung;
 	

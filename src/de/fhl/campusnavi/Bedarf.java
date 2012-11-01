@@ -3,7 +3,7 @@ package de.fhl.campusnavi;
 public class Bedarf {
 	private int id;
 	private int typ;
-	private POI poi;
+	private int poi;
 	
 	public int getId() {
 		return id;
@@ -17,10 +17,10 @@ public class Bedarf {
 	public void setTyp(int typ) {
 		this.typ = typ;
 	}
-	public POI getPoi() {
+	public int getPoi() {
 		return poi;
 	}
-	public void setPoi(POI poi) {
+	public void setPoi(int poi) {
 		this.poi = poi;
 	}
 	

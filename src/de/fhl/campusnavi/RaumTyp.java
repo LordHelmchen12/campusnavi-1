@@ -1,6 +1,6 @@
 package de.fhl.campusnavi;
 
-public class RaumTypen {
+public class RaumTyp {
 	private int id;
 	private String bereich;
 	private String bezeichnung;

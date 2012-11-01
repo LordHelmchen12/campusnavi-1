@@ -1,6 +1,6 @@
 package de.fhl.campusnavi;
 
-public class PersonTypen {
+public class PersonTyp {
 	private int id;
 	private String bezeichnung;
 	
@@ -18,7 +18,7 @@ public class PersonTypen {
 	}
 	
 	public String toString() {
-		return id + " " + bezeichnung;
+		return bezeichnung;
 	}
 
 }

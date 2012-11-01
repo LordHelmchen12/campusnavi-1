@@ -9,6 +9,7 @@ public class Person extends POI {
 	private String zustaendigkeiten;
 	private String email;
 	private String POI;
+	private String telefonnummer;
 	
 	public int getId() {
 		return id;
@@ -58,13 +59,26 @@ public class Person extends POI {
 	public void setPOI(String pOI) {
 		POI = pOI;
 	}
-	@Override
-	public String toString() {
+	public String getTelefonnummer() {
+		return telefonnummer;
+	}
+	public void setTelefonnummer(String telefonnummer) {
+		this.telefonnummer = telefonnummer;
+	}
+
+	public String returnInfo() {
 		String ret = "";
 		if (this.getTitel() != null) {
 			ret = ret + this.getTitel() + " ";
 		}
-		ret = ret + this.getVorname() + " " + this.getNachname();
+		ret += this.getVorname() + " " + this.getNachname() + "\n";
+		ret += this.getEmail() + "\n";
+		ret += this.getTelefonnummer();
+		return ret;
+	}
+	
+	public String toString() {
+		String ret = this.getTitel() + " " + this.getVorname() + " " + this.getNachname();
 		return ret;
 	}
 

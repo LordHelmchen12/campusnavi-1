@@ -46,8 +46,8 @@ public class Start extends Activity {
 	    startActivity(intent);
 	}
 	
-	public void openPersons(View view) {
-	    Intent intent = new Intent(this, ShowAllPersons.class);
+	public void openPersonTypes(View view) {
+	    Intent intent = new Intent(this, ShowAllPersonTyp.class);
 	    startActivity(intent);
 	}
 }

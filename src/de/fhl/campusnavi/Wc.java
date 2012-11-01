@@ -2,8 +2,8 @@ package de.fhl.campusnavi;
 
 public class Wc {
 	private int id;
-	private WcTyp typ;
-	private POI poi;
+	private int typ;
+	private int poi;
 	
 	public int getId() {
 		return id;
@@ -11,16 +11,16 @@ public class Wc {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public WcTyp getTyp() {
+	public int getTyp() {
 		return typ;
 	}
-	public void setTyp(WcTyp typ) {
+	public void setTyp(int typ) {
 		this.typ = typ;
 	}
-	public POI getPoi() {
+	public int getPoi() {
 		return poi;
 	}
-	public void setPoi(POI poi) {
+	public void setPoi(int poi) {
 		this.poi = poi;
 	}
 
