@@ -27,18 +27,6 @@
         <activity
             android:name=".Map"
             android:label="@string/title_activity_map" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".ShowAllPois" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ShowAllPersons"
@@ -46,6 +34,20 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="Start" />
+        </activity>
+        <activity
+            android:name=".ShowAllPersonTyp"
+            android:label="@string/title_activity_show_all_person_typ" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ShowAllPersons" />
+        </activity>
+        <activity
+            android:name=".ShowPerson"
+            android:label="@string/title_activity_show_person" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.fhl.campusnavi.ShowAllPersons" />
         </activity>
     </application>
 

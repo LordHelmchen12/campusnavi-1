@@ -78,7 +78,12 @@ public class Person extends POI {
 	}
 	
 	public String toString() {
-		String ret = this.getTitel() + " " + this.getVorname() + " " + this.getNachname();
+		String ret = "";
+		if (this.getTitel() != null) {
+			ret = this.getTitel() + " " + this.getVorname() + " " + this.getNachname();
+		} else {
+			ret = this.getVorname() + " " + this.getNachname();
+		}
 		return ret;
 	}
 
