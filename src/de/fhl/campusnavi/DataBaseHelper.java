@@ -70,7 +70,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	public static final String BEDARF_TYP = "typ";
 	public static final String BEDARF_POI = "poi";
 	
-	public static final String TABLE_BEDARF_TYPEN = "wc_typen";
+	public static final String TABLE_BEDARF_TYPEN = "bedarf_typen";
 	public static final String BEDARF_TYPEN_ID = "_id";
 	public static final String BEDARF_TYPEN_BEZEICHNUNG = "bezeichnung";
 	

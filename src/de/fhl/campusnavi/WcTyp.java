@@ -18,7 +18,7 @@ public class WcTyp {
 	}
 	
 	public String toString() {
-		return id + " " + bezeichnung;
+		return bezeichnung;
 	}
 
 }

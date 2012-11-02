@@ -55,4 +55,14 @@ public class Start extends Activity {
 	    Intent intent = new Intent(this, ShowAllRaumTypen.class);
 	    startActivity(intent);
 	}
+	
+	public void openBedarfTypen(View view) {
+	    Intent intent = new Intent(this, ShowAllBedarfTypen.class);
+	    startActivity(intent);
+	}
+	
+	public void openWcTypen(View view) {
+	    Intent intent = new Intent(this, ShowAllWcTypen.class);
+	    startActivity(intent);
+	}
 }

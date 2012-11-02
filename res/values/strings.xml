@@ -14,5 +14,9 @@
     <string name="title_activity_show_person">ShowPerson</string>
     <string name="title_activity_show_all_raum_typen">ShowAllRaumTypen</string>
     <string name="title_activity_show_all_raeume">ShowAllRaeume</string>
+    <string name="title_activity_show_all_bedarf_typen">ShowAllBedarfTypen</string>
+    <string name="title_activity_show_all_bedarf">ShowAllBedarf</string>
+    <string name="title_activity_show_all_wc_typen">ShowAllWcTypen</string>
+    <string name="title_activity_show_all_wc">ShowAllWc</string>
 
 </resources>

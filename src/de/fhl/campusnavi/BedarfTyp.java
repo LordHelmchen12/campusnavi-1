@@ -18,7 +18,7 @@ public class BedarfTyp {
 	}
 	
 	public String toString() {
-		return id + " " + bezeichnung;
+		return bezeichnung;
 	}
 
 }

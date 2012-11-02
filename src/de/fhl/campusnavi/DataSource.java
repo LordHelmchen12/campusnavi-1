@@ -280,11 +280,11 @@ public class DataSource {
 	
 	/* Getters for Bedarf */
 	
-	public List<Bedarf> getAllBedarf() {
+	public List<Bedarf> getBedarfByType(int typ) {
 		List<Bedarf> list = new ArrayList<Bedarf>();
 		
 		Cursor cursor = database.query(DataBaseHelper.TABLE_BEDARF,
-				null, null, null, null, null, null);
+				null, "typ = " + typ, null, null, null, null);
 		
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
@@ -295,7 +295,7 @@ public class DataSource {
 		
 		cursor.close();
 		return list;
-	}
+	}	
 	
 	public Bedarf getBedarfById(int Id) {
 		Bedarf ret = new Bedarf();
@@ -357,11 +357,11 @@ public class DataSource {
 	
 	/* Getters for Wc */
 	
-	public List<Wc> getAllWc() {
+	public List<Wc> getWcsByType(int typ) {
 		List<Wc> list = new ArrayList<Wc>();
 		
-		Cursor cursor = database.query(DataBaseHelper.TABLE_BEDARF_TYPEN,
-				null, null, null, null, null, null);
+		Cursor cursor = database.query(DataBaseHelper.TABLE_WC,
+				null, "typ = " + typ, null, null, null, null);
 		
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {

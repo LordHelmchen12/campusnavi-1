@@ -1,6 +1,6 @@
 package de.fhl.campusnavi;
 
-public class Wc {
+public class Wc extends POI {
 	private int id;
 	private int typ;
 	private int poi;
@@ -22,6 +22,10 @@ public class Wc {
 	}
 	public void setPoi(int poi) {
 		this.poi = poi;
+	}
+	@Override
+	public String toString() {
+		return "Wc [typ=" + typ + "]";
 	}
 
 }

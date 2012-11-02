@@ -20,7 +20,6 @@
             android:label="@string/title_activity_start" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -52,20 +51,26 @@
         <activity
             android:name=".ShowAllRaumTypen"
             android:label="@string/title_activity_show_all_raum_typen" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ShowAllRaeume"
             android:label="@string/title_activity_show_all_raeume" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ShowAllBedarfTypen"
+            android:label="@string/title_activity_show_all_bedarf_typen" >
+        </activity>
+        <activity
+            android:name=".ShowAllBedarf"
+            android:label="@string/title_activity_show_all_bedarf" >
+        </activity>
+        <activity
+            android:name=".ShowAllWcTypen"
+            android:label="@string/title_activity_show_all_wc_typen" >
+        </activity>
+        <activity
+            android:name=".ShowAllWc"
+            android:label="@string/title_activity_show_all_wc" >
         </activity>
     </application>
 

@@ -3,6 +3,7 @@ package de.fhl.campusnavi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class ShowPerson extends Activity {
@@ -26,4 +27,8 @@ public class ShowPerson extends Activity {
         text.setText(person.returnInfo());
     }
     
+    public void showMap(View view) {
+	    Intent intent = new Intent(this, Map.class);
+	    startActivity(intent);
+	}  
 }

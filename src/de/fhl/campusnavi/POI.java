@@ -1,5 +1,7 @@
 package de.fhl.campusnavi;
 
+import android.location.Location;
+
 public class POI {
 	private int id;
 	private String bezeichnung;
@@ -8,8 +10,11 @@ public class POI {
 	private int bewertung;
 	private String tags;
 	private String besonderheit;
-	private int x_koordinate;
-	private int y_koordinate;
+	private double x_koordinate;
+	private double y_koordinate;
+	private double distance;
+	
+	private Location mostRecentLocation;
 	
 	public int getId() {
 		return id;
@@ -67,7 +72,7 @@ public class POI {
 		this.besonderheit = besonderheit;
 	}
 
-	public int getX_koordinate() {
+	public double getX_koordinate() {
 		return x_koordinate;
 	}
 
@@ -75,12 +80,26 @@ public class POI {
 		this.x_koordinate = x_koordinate;
 	}
 
-	public int getY_koordinate() {
+	public double getY_koordinate() {
 		return y_koordinate;
 	}
 
 	public void setY_koordinate(int y_koordinate) {
 		this.y_koordinate = y_koordinate;
+	}
+	
+	public double getDistance() {
+		return distance;
+	}
+
+	public void setDistance(double distance) {
+		this.distance = distance;
+	}
+	
+	public void calcDistance(POI poi) {
+		double D = 0;
+		D = Math.sqrt(Math.pow(poi.getX_koordinate() - mostRecentLocation.getLatitude(),2) + Math.pow(poi.getY_koordinate() - mostRecentLocation.getLongitude(),2));
+		poi.setDistance(D);
 	}
 
 	// Will be used by the ArrayAdapter in the ListView
