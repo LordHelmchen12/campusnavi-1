@@ -8,6 +8,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.util.Log;
 import android.webkit.JsResult;
@@ -26,6 +27,8 @@ public class Map extends Activity implements LocationListener {
     private String markerDevice;
     private String markerTarget;
     
+    private DataSource datasource;
+    
   
     /**
      * onCreate()
@@ -36,8 +39,18 @@ public class Map extends Activity implements LocationListener {
 	      super.onCreate(savedInstanceState);
 	      setContentView(R.layout.activity_map);
 	      getLocation();
-	      setupWebView();
 	      this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+	      
+	      datasource = new DataSource(this);
+	      datasource.open();
+	      
+	      Intent intent = getIntent();
+	      POI poi = datasource.getPoiById(intent.getIntExtra("selected", 0));
+	      double x_koordinate = poi.getX_koordinate();
+	      double y_koordinate = poi.getY_koordinate();      
+
+	      setupWebView(x_koordinate, y_koordinate);
+	    		  
     }
     
     /**
@@ -70,11 +83,11 @@ public class Map extends Activity implements LocationListener {
      * Hier werden Einstellungen für den WebView (Browser) festgelegt
      * und die URL geladen
      */
-    private void setupWebView(){
+    private void setupWebView(double x_koordinate, double y_koordinate){
   
      try{
     	markerDevice = "javascript:markerDevice(" + mostRecentLocation.getLatitude() + "," + mostRecentLocation.getLongitude()+ ")";
-        markerTarget = "javascript:markerTarget(" + 53.83769929578616 +"," + 10.69892406463623 + ")";
+        markerTarget = "javascript:markerTarget(" + x_koordinate +"," + y_koordinate + ")";
       }catch(Exception e){
     	  //go to Nordcap
          e.printStackTrace();

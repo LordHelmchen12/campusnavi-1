@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 public class ShowPerson extends Activity {
 	private DataSource datasource;
+	private Person person;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -19,7 +20,7 @@ public class ShowPerson extends Activity {
         datasource = new DataSource(this);
 		datasource.open();
 		
-		Person person = datasource.getPersonById(intent.getIntExtra("selected", 0));
+		person = datasource.getPersonById(intent.getIntExtra("selected", 0));
 		
         datasource.close();
         
@@ -29,6 +30,8 @@ public class ShowPerson extends Activity {
     
     public void showMap(View view) {
 	    Intent intent = new Intent(this, Map.class);
+	    int selected = (person.getId());
+		intent.putExtra("selected", selected);
 	    startActivity(intent);
 	}  
 }
