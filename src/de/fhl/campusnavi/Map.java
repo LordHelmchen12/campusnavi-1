@@ -46,6 +46,9 @@ public class Map extends Activity implements LocationListener {
 	      
 	      Intent intent = getIntent();
 	      POI poi = datasource.getPoiById(intent.getIntExtra("selected", 0));
+	      Log.d("†bergebener Poi: ", "" + poi.getId());
+	      Log.d("Longitude: ", "" + poi.getLongitude());
+	      Log.d("Latitude: ", "" + poi.getLatitude());
 	      double longitude = poi.getLongitude();
 	      double latitude = poi.getLatitude();      
 

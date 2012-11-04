@@ -41,8 +41,8 @@ public class DataSource {
 	private POI cursorToPOI(Cursor cursor) {
 		POI ret = new POI();
 		ret.setId(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.POIS_ID)));
-		ret.setLongitude(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.POIS_LONGITUDE)));
-		ret.setLatitude(cursor.getInt(cursor.getColumnIndex(DataBaseHelper.POIS_LATITUDE)));
+		ret.setLongitude(cursor.getDouble(cursor.getColumnIndex(DataBaseHelper.POIS_LONGITUDE)));
+		ret.setLatitude(cursor.getDouble(cursor.getColumnIndex(DataBaseHelper.POIS_LATITUDE)));
 		ret.setTags(cursor.getString(cursor.getColumnIndex(DataBaseHelper.POIS_TAGS)));
 		return ret;
 	}

@@ -3,6 +3,7 @@ package de.fhl.campusnavi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -34,7 +35,8 @@ public class ShowPerson extends Activity {
 	    Intent intent = new Intent(this, Map.class);
 	    int raumid = (person.getRaum());
 	    Raum raum = datasource.getRaumById(raumid);
-	    int selected = raum.getPoi();  
+	    int selected = raum.getPoi();
+	    Log.d("Selected Poi: ", "" + selected);
 		intent.putExtra("selected", selected);
 	    startActivity(intent);
 	}  
