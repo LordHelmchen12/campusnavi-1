@@ -12,27 +12,25 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class ShowAllBedarf extends ListActivity {
+public class ShowAllEinrichtung extends ListActivity {
 	private DataSource datasource;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show_list);
-		
-		Intent intent = getIntent();
 			
 		datasource = new DataSource(this);
 		datasource.open();
 		
-		List<Bedarf> bedarf = datasource.getBedarfByType(intent.getIntExtra("selected", 0));
+		List<Einrichtung> einrichtung = datasource.getAllEinrichtung();
 
 		datasource.close();
 		
 		// Use the SimpleCursorAdapter to show the
 		// elements in a ListView
-		ArrayAdapter<Bedarf> adapter = new ArrayAdapter<Bedarf>(this,
-				android.R.layout.simple_list_item_1, bedarf);
+		ArrayAdapter<Einrichtung> adapter = new ArrayAdapter<Einrichtung>(this,
+				android.R.layout.simple_list_item_1, einrichtung);
 		final ListView lv = getListView();
 		lv.setAdapter(adapter);
 		
@@ -40,17 +38,11 @@ public class ShowAllBedarf extends ListActivity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				Intent intent = new Intent();
-				intent.setClassName(getPackageName(), getPackageName()+".ShowBedarf");
-				int selected = ((Bedarf) lv.getAdapter().getItem(arg2)).getId();
+				intent.setClassName(getPackageName(), getPackageName()+".ShowEinrichtung");
+				int selected = ((Einrichtung) lv.getAdapter().getItem(arg2)).getId();
 				intent.putExtra("selected", selected);
 				startActivity(intent);
 			}
 		});
 	}
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_show_all_bedarf, menu);
-        return true;
-    }
 }

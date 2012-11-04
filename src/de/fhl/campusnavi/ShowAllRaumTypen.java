@@ -46,10 +46,4 @@ public class ShowAllRaumTypen extends ListActivity {
 			}
 		});
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_show_all_raum_typen, menu);
-        return true;
-    }
 }

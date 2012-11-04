@@ -2,29 +2,26 @@ package de.fhl.campusnavi;
 
 public class RaumTyp {
 	private int id;
-	private String bereich;
-	private String bezeichnung;
-	
+	private String name;
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getBereich() {
-		return bereich;
+
+	public String getName() {
+		return name;
 	}
-	public void setBereich(String bereich) {
-		this.bereich = bereich;
-	}
-	public String getBezeichnung() {
-		return bezeichnung;
-	}
-	public void setBezeichnung(String bezeichnung) {
-		this.bezeichnung = bezeichnung;
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
+	@Override
 	public String toString() {
-		return this.bezeichnung;
+		return this.name;
 	}
 }

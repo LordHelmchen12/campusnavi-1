@@ -2,7 +2,7 @@ package de.fhl.campusnavi;
 
 public class Fachbereich {
 	private int id;
-	private String bezeichnung;
+	private String name;
 	
 	public int getId() {
 		return id;
@@ -10,15 +10,16 @@ public class Fachbereich {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getBezeichnung() {
-		return bezeichnung;
+	public String getName() {
+		return name;
 	}
-	public void setBezeichnung(String bezeichnung) {
-		this.bezeichnung = bezeichnung;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
+	@Override
 	public String toString() {
-		return id + " " + bezeichnung;
+		return name;
 	}
 
 }

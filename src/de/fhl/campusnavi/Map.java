@@ -46,10 +46,10 @@ public class Map extends Activity implements LocationListener {
 	      
 	      Intent intent = getIntent();
 	      POI poi = datasource.getPoiById(intent.getIntExtra("selected", 0));
-	      double x_koordinate = poi.getX_koordinate();
-	      double y_koordinate = poi.getY_koordinate();      
+	      double longitude = poi.getLongitude();
+	      double latitude = poi.getLatitude();      
 
-	      setupWebView(x_koordinate, y_koordinate);
+	      setupWebView(latitude, longitude);
 	    		  
     }
     
@@ -83,11 +83,11 @@ public class Map extends Activity implements LocationListener {
      * Hier werden Einstellungen für den WebView (Browser) festgelegt
      * und die URL geladen
      */
-    private void setupWebView(double x_koordinate, double y_koordinate){
+    private void setupWebView(double latitude, double longitude){
   
      try{
     	markerDevice = "javascript:markerDevice(" + mostRecentLocation.getLatitude() + "," + mostRecentLocation.getLongitude()+ ")";
-        markerTarget = "javascript:markerTarget(" + x_koordinate +"," + y_koordinate + ")";
+        markerTarget = "javascript:markerTarget(" + latitude +"," + longitude + ")";
       }catch(Exception e){
     	  //go to Nordcap
          e.printStackTrace();
@@ -134,7 +134,8 @@ public class Map extends Activity implements LocationListener {
      * onLocationChanged()
      * Der Standort auf der Karte wird auf Gerätestandort aktualisiert
      */
-    public void onLocationChanged(Location location) {
+    @Override
+	public void onLocationChanged(Location location) {
       mostRecentLocation = location;
 	      if(markerDevice.equals("javascript:markerDevice(" + mostRecentLocation.getLatitude() + "," + mostRecentLocation.getLongitude() + ")")){
 	         webView.loadUrl(markerDevice);
@@ -145,21 +146,24 @@ public class Map extends Activity implements LocationListener {
      * onProviderDisabled()
      * wird nur benötigt da: Activity implements LocationListener
      */
-    public void onProviderDisabled(String provider) {
+    @Override
+	public void onProviderDisabled(String provider) {
     }
     
     /**
      * onProviderEnabled()
      * wird nur benötigt da: Activity implements LocationListener
      */
-    public void onProviderEnabled(String provider) {	
+    @Override
+	public void onProviderEnabled(String provider) {	
     }
     
     /**
      * onStatusChanged()
      * wird nur benötigt da: Activity implements LocationListener
      */
-    public void onStatusChanged(String provider, int status, Bundle extras) {
+    @Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
     }
     
     

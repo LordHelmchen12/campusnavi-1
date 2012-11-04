@@ -9,6 +9,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
@@ -20,6 +21,7 @@
             android:label="@string/title_activity_start" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -27,51 +29,17 @@
             android:name=".Map"
             android:label="@string/title_activity_map" >
         </activity>
-        <activity
-            android:name=".ShowAllPersons"
-            android:label="@string/title_activity_show_all_persons" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="Start" />
-        </activity>
-        <activity
-            android:name=".ShowAllPersonTyp"
-            android:label="@string/title_activity_show_all_person_typ" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ShowAllPersons" />
-        </activity>
-        <activity
-            android:name=".ShowPerson"
-            android:label="@string/title_activity_show_person" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.fhl.campusnavi.ShowAllPersons" />
-        </activity>
-        <activity
-            android:name=".ShowAllRaumTypen"
-            android:label="@string/title_activity_show_all_raum_typen" >
-        </activity>
-        <activity
-            android:name=".ShowAllRaeume"
-            android:label="@string/title_activity_show_all_raeume" >
-        </activity>
-        <activity
-            android:name=".ShowAllBedarfTypen"
-            android:label="@string/title_activity_show_all_bedarf_typen" >
-        </activity>
-        <activity
-            android:name=".ShowAllBedarf"
-            android:label="@string/title_activity_show_all_bedarf" >
-        </activity>
-        <activity
-            android:name=".ShowAllWcTypen"
-            android:label="@string/title_activity_show_all_wc_typen" >
-        </activity>
-        <activity
-            android:name=".ShowAllWc"
-            android:label="@string/title_activity_show_all_wc" >
-        </activity>
+        <activity android:name=".ShowAllPersons" />
+        <activity android:name=".ShowAllPersonTyp" />
+        <activity android:name=".ShowPerson" />
+        <activity android:name=".ShowAllRaumTypen" />
+        <activity android:name=".ShowAllRaeume" />
+        <activity android:name=".ShowAllEinrichtung" />
+        <activity android:name=".ShowAllRaumTypenWc" />
+        <activity android:name=".ShowAllRaumTypenBuero" />
+        <activity android:name=".ShowAllRaumTypenLehrsaal" />
+        <activity android:name=".ShowEinrichtung" />
+        <activity android:name=".ShowRaum" />
     </application>
 
 </manifest>

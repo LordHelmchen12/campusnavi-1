@@ -9,7 +9,6 @@ import android.database.SQLException;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.EditText;
 
 public class Start extends Activity {
 	private Context myContext;
@@ -41,11 +40,6 @@ public class Start extends Activity {
 		return true;
 	}
 	
-	public void openPois(View view) {
-	    Intent intent = new Intent(this, Map.class);
-	    startActivity(intent);
-	}
-	
 	public void openPersonTypes(View view) {
 	    Intent intent = new Intent(this, ShowAllPersonTyp.class);
 	    startActivity(intent);
@@ -56,13 +50,23 @@ public class Start extends Activity {
 	    startActivity(intent);
 	}
 	
-	public void openBedarfTypen(View view) {
-	    Intent intent = new Intent(this, ShowAllBedarfTypen.class);
+	public void openEinrichtung(View view) {
+	    Intent intent = new Intent(this, ShowAllEinrichtung.class);
 	    startActivity(intent);
 	}
 	
-	public void openWcTypen(View view) {
-	    Intent intent = new Intent(this, ShowAllWcTypen.class);
+	public void openWcs(View view) {
+	    Intent intent = new Intent(this, ShowAllRaumTypenWc.class);
+	    startActivity(intent);
+	}
+	
+	public void openLehrsaal(View view) {
+	    Intent intent = new Intent(this, ShowAllRaumTypenLehrsaal.class);
+	    startActivity(intent);
+	}
+	
+	public void openBuero(View view) {
+	    Intent intent = new Intent(this, ShowAllRaumTypenBuero.class);
 	    startActivity(intent);
 	}
 }

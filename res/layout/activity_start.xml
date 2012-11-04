@@ -13,42 +13,41 @@
         android:text="Personen" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/Button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:onClick="openRaumTypen"
-        android:text="Räume" />
+        android:layout_centerVertical="true"
+        android:onClick="openWcs"
+        android:text="Wcs" />
+
+    <Button
+        android:id="@+id/Button01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="85dp"
+        android:onClick="openBuero"
+        android:text="Büros" />
+
+    <Button
+        android:id="@+id/Button02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Button01"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:onClick="openLehrsaal"
+        android:text="Lehrsäle" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/button3"
-        android:layout_below="@+id/button3"
-        android:layout_marginTop="14dp"
-        android:onClick="openBedarfTypen"
-        android:text="Bedarf" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button4"
+        android:layout_below="@+id/Button5"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="21dp"
-        android:onClick="openWcTypen"
-        android:text="WC" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button3"
-        android:layout_alignParentLeft="true"
-        android:onClick="openPois"
-        android:text="Zeige alle Pois" />
+        android:layout_marginTop="25dp"
+        android:onClick="openEinrichtung"
+        android:text="Einrichtungen" />
 
 </RelativeLayout>

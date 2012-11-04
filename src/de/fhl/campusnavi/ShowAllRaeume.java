@@ -47,10 +47,4 @@ public class ShowAllRaeume extends ListActivity {
 			}
 		});
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_show_all_raeume, menu);
-        return true;
-    }
 }

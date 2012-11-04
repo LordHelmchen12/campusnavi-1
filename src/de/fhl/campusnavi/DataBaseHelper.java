@@ -21,67 +21,51 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 	public static final String TABLE_POIS = "pois";
 	public static final String POIS_ID = "_id";
-	public static final String POIS_BEZEICHNUNG = "bezeichnung";
-	public static final String POIS_GEBAEUDE = "gebaeude";
-	public static final String POIS_FACHBEREICH = "fachbereich";
-	public static final String POIS_BEWERTUNG = "bewertung";
 	public static final String POIS_TAGS = "tags";
-	public static final String POIS_BESONDERHEIT = "besonderheit";
-	public static final String POIS_X_KOORDINATE = "x_koordinate";
-	public static final String POIS_Y_KOORDINATE = "y_koordinate";
+	public static final String POIS_LONGITUDE = "longitude";
+	public static final String POIS_LATITUDE = "latitude";
 	
-	public static final String TABLE_PERSONEN = "personen";
-	public static final String PERSONEN_ID = "_id";
-	public static final String PERSONEN_VORNAME = "vorname";
-	public static final String PERSONEN_NACHNAME = "nachname";
-	public static final String PERSONEN_TITEL = "titel";
-	public static final String PERSONEN_SPRECHZEIT = "sprechzeit";
-	public static final String PERSONEN_ZUSTAENDIGKEITEN = "zustaendigkeiten";
-	public static final String PERSONEN_EMAIL = "email";
-	public static final String PERSONEN_POI = "poi";
-	public static final String PERSONEN_TELEFONNUMMER = "telefonnummer";
+	public static final String TABLE_PERSON = "person";
+	public static final String PERSON_ID = "_id";
+	public static final String PERSON_VORNAME = "vorname";
+	public static final String PERSON_NACHNAME = "nachname";
+	public static final String PERSON_TITEL = "titel";
+	public static final String PERSON_ZUSTAENDIGKEIT = "zustaendigkeit";
+	public static final String PERSON_EMAIL = "email";
+	public static final String PERSON_TELEFON = "telefon";
+	public static final String PERSON_SPRECHZEITEN = "sprechzeiten";
+	public static final String PERSON_FACHBEREICH = "fachbereich";
+	public static final String PERSON_TYP = "typ";
+	public static final String PERSON_RAUM = "raum";
+	public static final String PERSON_POI = "poi";
 	
-	public static final String TABLE_PERSONEN_TYPEN = "personen_typen";
-	public static final String PERSONEN_TYPEN_ID = "_id";
-	public static final String PERSONEN_TYPEN_BEZEICHNUNG = "bezeichnung";
+	public static final String TABLE_PERSON_TYP = "person_typ";
+	public static final String PERSON_TYP_ID = "_id";
+	public static final String PERSON_TYP_NAME = "name";
 	
-	public static final String TABLE_RAEUME = "raeume";
-	public static final String RAEUME_ID = "_id";
-	public static final String RAEUME_NAME = "name";
-	public static final String RAEUME_NUMMER = "nummer";
-	public static final String RAEUME_GEBAEUDE = "gebaeude";
-	public static final String RAEUME_STOCKWERK = "stockwerk";
+	public static final String TABLE_RAUM = "raum";
+	public static final String RAUM_ID = "_id";
+	public static final String RAUM_POI = "poi";
+	public static final String RAUM_GEBAEUDE = "gebaeude";
+	public static final String RAUM_STOCKWERK = "stockwerk";
+	public static final String RAUM_NUMMER = "nummer";
+	public static final String RAUM_TYP = "typ";
+	public static final String RAUM_FACHBEREICH = "fachbereich";
 	
-	public static final String TABLE_RAEUME_TYPEN = "raeume_typen";
-	public static final String RAEUME_TYPEN_ID = "_id";
-	public static final String RAEUME_TYPEN_BEZEICHNUNG = "bezeichnung";
-	public static final String RAEUME_TYPEN_BEREICH = "bereich";
+	public static final String TABLE_RAUM_TYP = "raum_typ";
+	public static final String RAUM_TYP_ID = "_id";
+	public static final String RAUM_TYP_NAME = "name";
 	
-	public static final String TABLE_GEBAEUDE = "gebaeude";
-	public static final String GEBAEUDE_ID = "_id";
-	public static final String GEBAEUDE_NUMMER = "nummer";
-	
-	public static final String TABLE_FACHBEREICHE = "fachbereiche";
-	public static final String FACHBEREICHE_ID = "_id";
-	public static final String FACHBEREICHE_BEZEICHNUNG = "bezeichnung";
+	public static final String TABLE_FACHBEREICH = "fachbereich";
+	public static final String FACHBEREICH_ID = "_id";
+	public static final String FACHBEREICH_NAME = "name";
 
-	public static final String TABLE_BEDARF = "bedarf";
-	public static final String BEDARF_ID = "_id";
-	public static final String BEDARF_TYP = "typ";
-	public static final String BEDARF_POI = "poi";
-	
-	public static final String TABLE_BEDARF_TYPEN = "bedarf_typen";
-	public static final String BEDARF_TYPEN_ID = "_id";
-	public static final String BEDARF_TYPEN_BEZEICHNUNG = "bezeichnung";
-	
-	public static final String TABLE_WC = "wc";
-	public static final String WC_ID = "_id";
-	public static final String WC_TYP = "typ";
-	public static final String WC_POI = "poi";
-	
-	public static final String TABLE_WC_TYPEN = "wc_typen";
-	public static final String WC_TYPEN_ID = "_id";
-	public static final String WC_TYPEN_BEZEICHNUNG = "bezeichnung";
+	public static final String TABLE_EINRICHTUNG = "einrichtung";
+	public static final String EINRICHTUNG_ID = "_id";
+	public static final String EINRICHTUNG_POI = "poi";
+	public static final String EINRICHTUNG_NAME = "name";
+	public static final String EINRICHTUNG_ANGEBOT = "angebot";
+	public static final String EINRICHTUNG_OEFFNUNGSZEITEN = "oeffnungszeiten";
 	
 	private SQLiteDatabase myDataBase;
 

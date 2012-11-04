@@ -18,5 +18,6 @@
     <string name="title_activity_show_all_bedarf">ShowAllBedarf</string>
     <string name="title_activity_show_all_wc_typen">ShowAllWcTypen</string>
     <string name="title_activity_show_all_wc">ShowAllWc</string>
+    <string name="title_activity_show_einrichtung">ShowEinrichtung</string>
 
 </resources>

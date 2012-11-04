@@ -46,12 +46,6 @@ public class ShowAllPersons extends ListActivity {
 			}
 		});
 	}
-	
-	public void Back(View view) {
-	    Intent intent = new Intent(this, ShowAllPersonTyp.class);
-	    datasource.close();
-	    startActivity(intent);
-	}
 
 	@Override
 	protected void onResume() {

@@ -1,11 +1,15 @@
 package de.fhl.campusnavi;
 
-public class Raum extends POI {
+import android.content.Context;
+
+public class Raum {
 	private int id;
-	private String name;
-	private int nummer;
+	private int poi;
+	private int gebaeude;
 	private int stockwerk;
-	private POI poi;
+	private int nummer;
+	private int typ;
+	private int fachbereich;
 	
 	public int getId() {
 		return id;
@@ -13,17 +17,17 @@ public class Raum extends POI {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public int getPoi() {
+		return poi;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setPoi(int poi) {
+		this.poi = poi;
 	}
-	public int getNummer() {
-		return nummer;
+	public int getGebaeude() {
+		return gebaeude;
 	}
-	public void setNummer(int nummer) {
-		this.nummer = nummer;
+	public void setGebaeude(int gebaeude) {
+		this.gebaeude = gebaeude;
 	}
 	public int getStockwerk() {
 		return stockwerk;
@@ -31,17 +35,28 @@ public class Raum extends POI {
 	public void setStockwerk(int stockwerk) {
 		this.stockwerk = stockwerk;
 	}
-	
-	public POI getPoi() {
-		return poi;
+	public int getNummer() {
+		return nummer;
 	}
-	public void setPoi(POI poi) {
-		this.poi = poi;
+	public void setNummer(int nummer) {
+		this.nummer = nummer;
+	}
+	public int getTyp() {
+		return typ;
+	}
+	public void setTyp(int typ) {
+		this.typ = typ;
+	}
+	public int getFachbereich() {
+		return fachbereich;
+	}
+	public void setFachbereich(int fachbereich) {
+		this.fachbereich = fachbereich;
 	}
 	
 	@Override
 	public String toString() {
-		return this.getNummer() + " " + this.getName();
+		return "Raum " + gebaeude + "." + stockwerk + "." + nummer;
 	}
-
+	
 }
