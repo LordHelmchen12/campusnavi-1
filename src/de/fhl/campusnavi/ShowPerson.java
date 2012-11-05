@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class ShowPerson extends Activity {
 	private DataSource datasource;
 	private Person person;
+	private int raumid;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,18 +24,34 @@ public class ShowPerson extends Activity {
 		
 		person = datasource.getPersonById(intent.getIntExtra("selected", 0));
 		
+		int gebaeude = 0;
+		int stockwerk = 0;
+		int raumnummer = 0;
+		boolean raumGiven;
+		try {
+			raumid = person.getRaum();
+			gebaeude = datasource.getRaumById(raumid).getGebaeude();
+			stockwerk = datasource.getRaumById(raumid).getStockwerk();
+			raumnummer = datasource.getRaumById(raumid).getNummer();
+			raumGiven = true;
+		} catch (Exception e) {
+			raumGiven = false;
+		}
+		
         datasource.close();
         
         TextView text = (TextView) findViewById(R.id.tv);
-        text.setText(person.returnInfo());
+        String description = person.returnInfo();
+        if (raumGiven = true) description += "\nBŸro: " + gebaeude + "." + stockwerk + "." + raumnummer;
+        text.setText(description);
     }
     
     public void showMap(View view) {
     	datasource = new DataSource(this);
 		datasource.open();
 	    Intent intent = new Intent(this, Map.class);
-	    int raumid = (person.getRaum());
 	    Raum raum = datasource.getRaumById(raumid);
+		datasource.close();
 	    int selected = raum.getPoi();
 	    Log.d("Selected Poi: ", "" + selected);
 		intent.putExtra("selected", selected);

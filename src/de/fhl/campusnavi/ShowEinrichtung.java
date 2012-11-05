@@ -30,8 +30,6 @@ public class ShowEinrichtung extends Activity {
     }
 
     public void showMap(View view) {
-    	datasource = new DataSource(this);
-		datasource.open();
 	    Intent intent = new Intent(this, Map.class);
 	    int selected = (einrichtung.getPoi());
 		intent.putExtra("selected", selected);

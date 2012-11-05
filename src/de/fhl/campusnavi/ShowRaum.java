@@ -40,15 +40,13 @@ public class ShowRaum extends Activity {
         datasource.close();
         
         TextView text = (TextView) findViewById(R.id.tv);
-        	String description = raum.toString();
-        	if (raumtyp != null) description += "\n" + raumtyp;
-        	if (fachbereich != null) description += "\n\nFachbereich:\n" + fachbereich;
-        	text.setText(description);
+    	String description = raum.toString();
+    	if (raumtyp != null) description += "\n" + raumtyp;
+    	if (fachbereich != null) description += "\n\nFachbereich:\n" + fachbereich;
+    	text.setText(description);
     }
 
     public void showMap(View view) {
-    	datasource = new DataSource(this);
-		datasource.open();
 	    Intent intent = new Intent(this, Map.class);
 	    int selected = (raum.getPoi());
 		intent.putExtra("selected", selected);
