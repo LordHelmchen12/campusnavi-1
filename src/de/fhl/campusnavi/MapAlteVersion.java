@@ -1,15 +1,15 @@
 package de.fhl.campusnavi;
 
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.util.Log;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
@@ -18,10 +18,10 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 
-public class Map extends Activity implements LocationListener {
+public class MapAlteVersion extends Activity implements LocationListener {
 
-	//private static final String MAP_URL = "file:///android_asset/googleMap.html";
-	private static final String MAP_URL = "http://gmaps-samples.googlecode.com/svn/trunk/articles-android-webmap/simple-android-map.html";
+	private static final String MAP_URL = "file:///android_asset/googleMap.html";
+	//private static final String MAP_URL = "http://gmaps-samples.googlecode.com/svn/trunk/articles-android-webmap/simple-android-map.html";
     private WebView webView;
     private Location mostRecentLocation;
     private String markerDevice;
@@ -45,6 +45,9 @@ public class Map extends Activity implements LocationListener {
 	      
 	      Intent intent = getIntent();
 	      POI poi = datasource.getPoiById(intent.getIntExtra("selected", 0));
+	      Log.d("Übergebener Poi: ", "" + poi.getId());
+	      Log.d("Longitude: ", "" + poi.getLongitude());
+	      Log.d("Latitude: ", "" + poi.getLatitude());
 	      double longitude = poi.getLongitude();
 	      double latitude = poi.getLatitude();      
 
@@ -61,6 +64,7 @@ public class Map extends Activity implements LocationListener {
     @Override
     protected void onResume(){
             super.onResume();
+            
             //Enable Javascript...This is needed so that Javascript is allowed to executeinside the WebView
             WebSettings webSettings = this.webView.getSettings();
             webSettings.setJavaScriptEnabled(true);
@@ -75,6 +79,7 @@ public class Map extends Activity implements LocationListener {
             //Load assets/html/index.html resource into the WebView control
             this.webView.loadUrl("file:///android_asset/html/index.html");
     }
+    
     
     /**
      * setupWebView()
@@ -92,7 +97,6 @@ public class Map extends Activity implements LocationListener {
         markerDevice = "javascript:markerDevice(71.147081,25.747833)";
       }
       webView = (WebView) findViewById(R.id.webview);
-      webView.getSettings().setJavaScriptEnabled(true);
       //Multitouch wird aktiviert falls es unterstützt wird
       webView.getSettings().setBuiltInZoomControls(true); 
       //Wartet auf die zu ladene Seite und sendet Informationen der "location"
@@ -105,8 +109,7 @@ public class Map extends Activity implements LocationListener {
 	        	//webView.loadUrl("javascript:showBicyclingLayer()");
 	        }
       });
-      webView.loadUrl(MAP_URL);
-      webView.addJavascriptInterface(new JavascriptBridge(), "android");
+      webView.loadUrl(MAP_URL);  
     }
 
     /** 
@@ -183,7 +186,7 @@ public class Map extends Activity implements LocationListener {
     	}
     
     	public double getLongitude() {
-    		return mostRecentLocation.getLongitude();
+    	return mostRecentLocation.getLongitude();
     	}
     	
     }
@@ -202,4 +205,5 @@ public class Map extends Activity implements LocationListener {
 	        return true;
 	    }
 	}
+	
 }

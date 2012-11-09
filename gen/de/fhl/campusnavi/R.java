@@ -35,17 +35,18 @@ public final class R {
     public static final class menu {
         public static final int activity_main=0x7f060000;
         public static final int activity_map=0x7f060001;
-        public static final int activity_show_all_bedarf=0x7f060002;
-        public static final int activity_show_all_bedarf_typen=0x7f060003;
-        public static final int activity_show_all_person_typ=0x7f060004;
-        public static final int activity_show_all_persons=0x7f060005;
-        public static final int activity_show_all_raeume=0x7f060006;
-        public static final int activity_show_all_raum_typen=0x7f060007;
-        public static final int activity_show_all_wc=0x7f060008;
-        public static final int activity_show_all_wc_typen=0x7f060009;
-        public static final int activity_show_einrichtung=0x7f06000a;
-        public static final int activity_show_person=0x7f06000b;
-        public static final int activity_start=0x7f06000c;
+        public static final int activity_map_test=0x7f060002;
+        public static final int activity_show_all_bedarf=0x7f060003;
+        public static final int activity_show_all_bedarf_typen=0x7f060004;
+        public static final int activity_show_all_person_typ=0x7f060005;
+        public static final int activity_show_all_persons=0x7f060006;
+        public static final int activity_show_all_raeume=0x7f060007;
+        public static final int activity_show_all_raum_typen=0x7f060008;
+        public static final int activity_show_all_wc=0x7f060009;
+        public static final int activity_show_all_wc_typen=0x7f06000a;
+        public static final int activity_show_einrichtung=0x7f06000b;
+        public static final int activity_show_person=0x7f06000c;
+        public static final int activity_start=0x7f06000d;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
@@ -55,6 +56,7 @@ public final class R {
         public static final int title_activity_main_activity2=0x7f040005;
         public static final int title_activity_main_activity3=0x7f040006;
         public static final int title_activity_map=0x7f040007;
+        public static final int title_activity_map_test=0x7f040013;
         public static final int title_activity_show_all_bedarf=0x7f04000f;
         public static final int title_activity_show_all_bedarf_typen=0x7f04000e;
         public static final int title_activity_show_all_person_typ=0x7f04000a;

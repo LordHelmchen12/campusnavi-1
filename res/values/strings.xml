@@ -19,5 +19,6 @@
     <string name="title_activity_show_all_wc_typen">ShowAllWcTypen</string>
     <string name="title_activity_show_all_wc">ShowAllWc</string>
     <string name="title_activity_show_einrichtung">ShowEinrichtung</string>
+    <string name="title_activity_map_test">MapTest</string>
 
 </resources>

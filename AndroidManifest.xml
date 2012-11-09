@@ -40,6 +40,15 @@
         <activity android:name=".ShowAllRaumTypenLehrsaal" />
         <activity android:name=".ShowEinrichtung" />
         <activity android:name=".ShowRaum" />
+        <activity
+            android:name=".MapTest"
+            android:label="@string/title_activity_map_test" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
