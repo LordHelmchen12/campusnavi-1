@@ -18,13 +18,13 @@ import android.webkit.WebViewClient;
 
 public class Map extends Activity implements LocationListener {
 
-	// private static final String MAP_URL =
-	// "file:///android_asset/googleMap.html";
+	// private static final String MAP_URL = "file:///android_asset/googleMap.html";
 	private static final String MAP_URL = "http://gmaps-samples.googlecode.com/svn/trunk/articles-android-webmap/simple-android-map.html";
 	private WebView webView;
 	private Location mostRecentLocation;
 	private String markerDevice;
 	private String markerTarget;
+	
 
 	private DataSource datasource;
 
@@ -126,7 +126,7 @@ public class Map extends Activity implements LocationListener {
 		 * android:name="android.permission.INTERNET"/>
 		 */
 		String provider = locationManager.getBestProvider(criteria, true);
-		locationManager.requestLocationUpdates(provider, 1, 1, this);
+		locationManager.requestLocationUpdates(provider, 1000, 1, this);
 		mostRecentLocation = locationManager.getLastKnownLocation(provider);
 	}
 
@@ -137,7 +137,7 @@ public class Map extends Activity implements LocationListener {
 	@Override
 	public void onLocationChanged(Location location) {
 		mostRecentLocation = location;
-		if (markerDevice.equals("javascript:markerDevice("
+		if (markerDevice != ("javascript:markerDevice("
 				+ mostRecentLocation.getLatitude() + ","
 				+ mostRecentLocation.getLongitude() + ")")) {
 			webView.loadUrl(markerDevice);
