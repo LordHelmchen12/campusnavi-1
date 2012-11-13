@@ -1,12 +1,18 @@
+<!DOCTYPE html>
 <html> 
 <head> 
+<style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0px; padding: 0px }
+  #map_canvas { height: 100%; width: 100% }
+</style>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script> 
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> 
 <script type="text/javascript">
 
-var map;
 var OutOfBoundsLatlng;
+var map;
 
 	function initialize() {
 		var latitude = 0;
@@ -14,7 +20,8 @@ var OutOfBoundsLatlng;
 	   
 		if (window.android){
 		  latitude = window.android.getLatitude();
-		  longitude = window.android.getLongitude();  
+		  longitude = window.android.getLongitude(); 
+		  log.d("Window.android Lat/Long loaded")
 		}
 	
 		var DeviceLatlng = new google.maps.LatLng(latitude,longitude); 
@@ -23,7 +30,7 @@ var OutOfBoundsLatlng;
 		<!-- Optionen für Karte -->
 		var mapOptions = {
 		  zoom: 16,  
-		  center: DeviceLatlng,
+		  center: TargetLatlng,
 		  disableDefaultUI: true,
 		  mapTypeId: google.maps.MapTypeId.HYBRID
 		}
@@ -33,14 +40,14 @@ var OutOfBoundsLatlng;
 		<!-- Begrenzung Zoom In/Out -->
 		var opt = { minZoom: 16, maxZoom: 19 };
 		map.setOptions(opt);
-	  
+
 		<!-- Grenzen Overlay -->
 		<!-- 1. Objekt SouthWest(Breite, Laenge), 2. Objekt NorthEast(Breite, Laenge) -->
 		<!-- Über die Diagonale wird ein Rechteck erzeugt -->
 		var imageBounds = new google.maps.LatLngBounds(
 			new google.maps.LatLng(53.83513207225795, 10.696070194244385),
 			new google.maps.LatLng(53.839411745800554, 10.702056884765625));
-		
+
 		<!-- Overlay Campus FHL -->
 	  	var campusmap = 'file:///android_asset/png/campusmap.png';
 		var oldmap = new google.maps.GroundOverlay(
@@ -62,12 +69,12 @@ var OutOfBoundsLatlng;
 		    if (strictBounds.contains(map.getCenter())) return;
 		
 		    <!-- Vergleich der Grenzen-->
-		    var c = map.getCenter(),
-		    var x = c.lat(),
-		    var y = c.lng(),
-		    var maxX = strictBounds.getNorthEast().lng(),
-		    var maxY = strictBounds.getNorthEast().lat(),
-		    var minX = strictBounds.getSouthWest().lng(),
+		    var c = map.getCenter();
+		    var x = c.lat();
+		    var y = c.lng();
+		    var maxX = strictBounds.getNorthEast().lng();
+		    var maxY = strictBounds.getNorthEast().lat();
+		    var minX = strictBounds.getSouthWest().lng();
 		    var minY = strictBounds.getSouthWest().lat();
 		    <!-- Grenzen ueberschritten - Karte wird auf Geratetstandort zentriert und auf minZoom-Grenze gesetzt-->
 		    if (x < minX || x > maxX){
@@ -107,7 +114,7 @@ var OutOfBoundsLatlng;
 
 </script> 
 </head>
-<body style="margin:0px; padding:0px;" onload="initialize()"> 
-  <div id="map_canvas" style="width:100%; height:100%"></div> 
+<body onload="initialize();">
+  <div id="map_canvas"></div> 
 </body>
 </html> 
